@@ -9,7 +9,7 @@ const DeckListItem = () => {
           <div className="col-auto me-auto">
             <h2 className="card-title">Deck Name Here</h2>
           </div>
-          <div className="col-auto">
+          <div className="col-auto d-flex align-items-end">
             <p className="text-end"># cards</p>
           </div>
         </div>
@@ -26,16 +26,16 @@ const DeckListItem = () => {
             <div className="row">
               <div className="col-auto pr-2">
                 <Button
-                  type={"button"}
                   variant={"secondary"}
+                  type={"button"}
                   text={"View"}
                   icon={"view"}
                 />
               </div>
               <div className="col-auto p-0">
                 <Button
-                  type={"button"}
                   variant={"primary"}
+                  type={"button"}
                   text={"Study"}
                   icon={"study"}
                 />
@@ -43,7 +43,7 @@ const DeckListItem = () => {
             </div>
           </div>
           <div className="col-auto">
-            <Button />
+            <Button variant={"danger"} type={"button"} icon={"trash"} />
           </div>
         </div>
       </div>

@@ -15,13 +15,13 @@ const Button = ({ variant, type, text = "", icon = "" }) => {
 
   const getIcon = icon => {
     if (icon === "add") {
-      return "bi bi-plus-lg";
+      return "bi bi-plus-lg mr-2";
     }
     if (icon === "view") {
-      return "bi bi-eye-fill";
+      return "bi bi-eye-fill mr-2";
     }
     if (icon === "study") {
-      return "bi bi-book-half";
+      return "bi bi-book-half mr-2";
     }
     if (icon === "trash") {
       return "bi bi-trash-fill";
@@ -32,7 +32,7 @@ const Button = ({ variant, type, text = "", icon = "" }) => {
 
   return (
     <button type={type} className={getButtonStyle(variant)}>
-      <i style={{ paddingRight: "12px" }} className={getIcon(icon)}></i>
+      <i className={getIcon(icon)}></i>
       {text}
     </button>
   );
