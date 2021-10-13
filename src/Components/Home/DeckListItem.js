@@ -1,24 +1,21 @@
 import React from "react";
 import Button from "../Common/Button";
 
-const DeckListItem = () => {
+const DeckListItem = ({ deckId, deckName, description, numberOfCards }) => {
   return (
     <div className="card mb-2">
       <div className="card-body">
         <div className="row justify-content-between">
           <div className="col-auto me-auto">
-            <h2 className="card-title">Deck Name Here</h2>
+            <h2 className="card-title">{deckName}</h2>
           </div>
           <div className="col-auto d-flex align-items-end">
-            <p className="text-end"># cards</p>
+            <p className="text-end">{numberOfCards} cards</p>
           </div>
         </div>
         <div className="row">
           <div className="col-auto">
-            <p className="text-body">
-              This is an example of the description for a deck. There could be
-              multiple sentences here.
-            </p>
+            <p className="text-body">{description}</p>
           </div>
         </div>
         <div className="row justify-content-between">
