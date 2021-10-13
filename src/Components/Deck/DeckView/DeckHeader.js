@@ -13,7 +13,7 @@ const DeckHeader = ({ deck }) => {
       <div className="row justify-content-between my-3">
         <div className="col-auto p-0">
           <div className="row">
-            <div className="col-auto pr-1">
+            <div className="col-auto pr-0 mr-2">
               <Button
                 variant={"secondary"}
                 type={"button"}
@@ -21,7 +21,7 @@ const DeckHeader = ({ deck }) => {
                 icon={"edit"}
               />
             </div>
-            <div className="col-auto pr-1">
+            <div className="col-auto px-0 mr-2">
               <Button
                 variant={"primary"}
                 type={"button"}
@@ -29,7 +29,7 @@ const DeckHeader = ({ deck }) => {
                 icon={"study"}
               />
             </div>
-            <div className="col-auto pr-0">
+            <div className="col-auto px-0">
               <Button
                 variant={"primary"}
                 type={"button"}

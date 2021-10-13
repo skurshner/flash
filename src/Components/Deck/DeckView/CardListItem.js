@@ -14,7 +14,7 @@ const CardListItem = ({ front, back }) => {
           </div>
         </div>
         <div className="row justify-content-end">
-          <div className="col-auto pr-1">
+          <div className="col-auto p-0 mr-2">
             <Button
               variant={"secondary"}
               type={"button"}
@@ -22,7 +22,7 @@ const CardListItem = ({ front, back }) => {
               icon={"edit"}
             />
           </div>
-          <div className="col-auto">
+          <div className="col-auto ml-0 pl-0">
             <Button variant={"danger"} type={"button"} icon={"trash"} />
           </div>
         </div>

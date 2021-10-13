@@ -28,7 +28,7 @@ const DeckListItem = ({ id, name, description, numberOfCards }) => {
         <div className="row justify-content-between">
           <div className="col-auto">
             <div className="row">
-              <div className="col-auto pr-2">
+              <div className="col-auto pr-0 mr-2">
                 <Button
                   variant={"secondary"}
                   type={"button"}
