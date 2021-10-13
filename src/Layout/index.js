@@ -4,6 +4,7 @@ import { listDecks } from "../utils/api";
 import Header from "./Header";
 import NotFound from "./NotFound";
 import Home from "../Components/Home/Home";
+import Deck from "../Components/Deck/Deck";
 
 function Layout() {
   const [decks, setDecks] = useState([]);
@@ -25,6 +26,9 @@ function Layout() {
         <Switch>
           <Route exact path={"/"}>
             <Home decks={decks} />
+          </Route>
+          <Route path={"/decks/:deckId"}>
+            <Deck />
           </Route>
           <Route>
             <NotFound />

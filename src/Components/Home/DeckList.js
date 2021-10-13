@@ -7,8 +7,8 @@ const DeckList = ({ decks }) => {
     return (
       <div key={index}>
         <DeckListItem
-          deckId={id}
-          deckName={name}
+          id={id}
+          name={name}
           description={description}
           numberOfCards={cards.length}
         />

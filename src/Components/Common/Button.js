@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ variant, type, text = "", icon = "" }) => {
+const Button = ({ variant, type, text = "", icon = "", clickHandler }) => {
   const getButtonStyle = variant => {
     if (variant === "secondary") {
       return "btn btn-secondary btn-lg";
@@ -31,7 +31,11 @@ const Button = ({ variant, type, text = "", icon = "" }) => {
   };
 
   return (
-    <button type={type} className={getButtonStyle(variant)}>
+    <button
+      type={type}
+      className={getButtonStyle(variant)}
+      onClick={clickHandler}
+    >
       <i className={getIcon(icon)}></i>
       {text}
     </button>

@@ -1,13 +1,20 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import Button from "../Common/Button";
 
-const DeckListItem = ({ deckId, deckName, description, numberOfCards }) => {
+const DeckListItem = ({ id, name, description, numberOfCards }) => {
+  const history = useHistory();
+
+  const viewButtonClickHandler = id => {
+    history.push(`decks/${id}`);
+  };
+
   return (
     <div className="card mb-2">
       <div className="card-body">
         <div className="row justify-content-between">
           <div className="col-auto me-auto">
-            <h2 className="card-title">{deckName}</h2>
+            <h2 className="card-title">{name}</h2>
           </div>
           <div className="col-auto d-flex align-items-end">
             <p className="text-end">{numberOfCards} cards</p>
@@ -27,6 +34,7 @@ const DeckListItem = ({ deckId, deckName, description, numberOfCards }) => {
                   type={"button"}
                   text={"View"}
                   icon={"view"}
+                  clickHandler={() => viewButtonClickHandler(id)}
                 />
               </div>
               <div className="col-auto p-0">
