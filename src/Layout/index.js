@@ -10,7 +10,6 @@ function Layout() {
   const [decks, setDecks] = useState([]);
 
   useEffect(() => {
-    setDecks([]);
     async function getDecks() {
       const decksList = await listDecks();
       setDecks(decksList);
