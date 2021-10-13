@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
+import { listDecks } from "../utils/api";
 import Header from "./Header";
 import NotFound from "./NotFound";
 import Home from "../Components/Home/Home";
 
 function Layout() {
+  const [decks, setDecks] = useState([]);
+
+  useEffect(() => {
+    setDecks([]);
+    async function getDecks() {
+      const decksList = await listDecks();
+      setDecks(decksList);
+    }
+
+    getDecks();
+  }, []);
+
   return (
     <>
       <Header />
       <div className="container">
         <Switch>
           <Route exact path={"/"}>
-            <Home />
+            <Home decks={decks} />
           </Route>
           <Route>
             <NotFound />
