@@ -1,12 +1,15 @@
 import React from "react";
 
-const Button = ({ name, type, text, icon }) => {
-  const getButtonStyle = name => {
-    if (name === "create" || name === "view") {
+const Button = ({ variant, type, text = "", icon = "" }) => {
+  const getButtonStyle = variant => {
+    if (variant === "secondary") {
       return "btn btn-secondary btn-lg";
     }
-    if (name === "study") {
+    if (variant === "primary") {
       return "btn btn-primary btn-lg";
+    }
+    if (variant === "danger") {
+      return "btn btn-danger btn-lg";
     }
   };
 
@@ -20,10 +23,15 @@ const Button = ({ name, type, text, icon }) => {
     if (icon === "study") {
       return "bi bi-book-half";
     }
+    if (icon === "trash") {
+      return "bi bi-trash-fill";
+    } else {
+      return "";
+    }
   };
 
   return (
-    <button type={type} className={getButtonStyle(name)}>
+    <button type={type} className={getButtonStyle(variant)}>
       <i style={{ paddingRight: "12px" }} className={getIcon(icon)}></i>
       {text}
     </button>

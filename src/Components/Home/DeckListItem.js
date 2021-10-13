@@ -27,7 +27,7 @@ const DeckListItem = () => {
               <div className="col-auto pr-2">
                 <Button
                   type={"button"}
-                  name={"view"}
+                  variant={"secondary"}
                   text={"View"}
                   icon={"view"}
                 />
@@ -35,7 +35,7 @@ const DeckListItem = () => {
               <div className="col-auto p-0">
                 <Button
                   type={"button"}
-                  name={"study"}
+                  variant={"primary"}
                   text={"Study"}
                   icon={"study"}
                 />

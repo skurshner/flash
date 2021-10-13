@@ -6,7 +6,7 @@ const DeckList = () => {
   return (
     <div className="container px-0">
       <Button
-        name={"create"}
+        variant={"secondary"}
         type={"button"}
         text={"Create Deck"}
         icon={"add"}
