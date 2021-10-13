@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
 import { readDeck } from "../../utils/api";
 import Breadcrumbs from "../Common/Breadcrumbs";
+import DeckHeader from "./DeckView/DeckHeader";
 
 const Deck = () => {
   const deckId = useRouteMatch().params.deckId;
@@ -18,13 +19,12 @@ const Deck = () => {
     }
 
     getDeck();
-  }, []);
+  }, [deckId]);
 
   return (
     <div className="container">
-      <Breadcrumbs />
-      <p>deck {deckId}</p>
-      <p>{deck.name}</p>
+      <Breadcrumbs tier={2} currentPage={deck.name} />
+      <DeckHeader deck={deck} />
     </div>
   );
 };

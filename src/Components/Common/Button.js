@@ -25,6 +25,9 @@ const Button = ({ variant, type, text = "", icon = "", clickHandler }) => {
     }
     if (icon === "trash") {
       return "bi bi-trash-fill";
+    }
+    if (icon === "edit") {
+      return "bi bi-pencil-fill mr-2";
     } else {
       return "";
     }
