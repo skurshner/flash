@@ -9,6 +9,10 @@ const DeckListItem = ({ id, name, description, numberOfCards }) => {
     history.push(`decks/${id}`);
   };
 
+  const studyButtonClickHandler = id => {
+    history.push(`decks/${id}/study`);
+  };
+
   return (
     <div className="card mb-2">
       <div className="card-body">
@@ -43,6 +47,7 @@ const DeckListItem = ({ id, name, description, numberOfCards }) => {
                   type={"button"}
                   text={"Study"}
                   icon={"study"}
+                  clickHandler={() => studyButtonClickHandler(id)}
                 />
               </div>
             </div>

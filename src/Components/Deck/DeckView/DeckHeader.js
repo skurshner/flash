@@ -1,7 +1,15 @@
 import React from "react";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import Button from "../../Common/Button";
 
 const DeckHeader = ({ deck }) => {
+  const history = useHistory();
+  const { url } = useRouteMatch();
+
+  const studyButtonClickHandler = () => {
+    history.push(`${url}/study`);
+  };
+
   return (
     <div className="container my-4">
       <div className="row">
@@ -27,6 +35,7 @@ const DeckHeader = ({ deck }) => {
                 type={"button"}
                 text={"Study"}
                 icon={"study"}
+                clickHandler={() => studyButtonClickHandler()}
               />
             </div>
             <div className="col-auto px-0">
