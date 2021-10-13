@@ -1,4 +1,5 @@
 import React from "react";
+import CardListItem from "./CardListItem";
 
 const CardList = ({ deck }) => {
   const cardsFromDeck = deck.cards;
@@ -6,8 +7,7 @@ const CardList = ({ deck }) => {
   const listOfCards = cardsFromDeck.map((card, index) => {
     return (
       <div key={index}>
-        <p>{card.front}</p>
-        <p>{card.back}</p>
+        <CardListItem front={card.front} back={card.back} />
       </div>
     );
   });
