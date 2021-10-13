@@ -4,18 +4,19 @@ import { useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
 import { readDeck } from "../../utils/api";
 import Breadcrumbs from "../Common/Breadcrumbs";
+import CardList from "./DeckView/CardList";
 import DeckHeader from "./DeckView/DeckHeader";
 
 const Deck = () => {
   const deckId = useRouteMatch().params.deckId;
 
-  const [deck, setDeck] = useState({});
+  const [deck, setDeck] = useState({ cards: [] });
 
   useEffect(() => {
-    setDeck({});
+    setDeck({ cards: [] });
     async function getDeck() {
-      const deck = await readDeck(deckId);
-      setDeck(deck);
+      const newDeck = await readDeck(deckId);
+      setDeck(newDeck);
     }
 
     getDeck();
@@ -25,6 +26,7 @@ const Deck = () => {
     <div className="container">
       <Breadcrumbs tier={2} currentPage={deck.name} />
       <DeckHeader deck={deck} />
+      <CardList deck={deck} />
     </div>
   );
 };
