@@ -31,7 +31,7 @@ const Deck = () => {
         </div>
       </Route>
       <Route path={`/decks/:deckId/study`}>
-        <Study deck={deck} deckURL={url} />
+        <Study deckId={deckId} deckURL={url} />
       </Route>
     </Switch>
   );

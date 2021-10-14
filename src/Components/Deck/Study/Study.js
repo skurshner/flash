@@ -1,19 +1,25 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { readDeck } from "../../../utils/api";
 import Breadcrumbs from "../../Common/Breadcrumbs";
 import FlashCards from "./FlashCards";
 
-const Study = ({ deck, deckURL }) => {
-  const initialCardState = { id: 1, front: true };
-  const [cardState, setCardState] = useState(initialCardState);
+const Study = ({ deckId, deckURL }) => {
+  const [deck, setDeck] = useState({});
+  const [cardNumber, setCardNumber] = useState(1);
+  const [numberOfCards, setNumberOfCards] = useState(0);
 
-  const flipButtonHandler = () => {
-    setCardState(currentCardState => {
-      return {
-        ...currentCardState,
-        front: !currentCardState.front,
-      };
-    });
+  useEffect(() => {
+    async function getDeck() {
+      const newDeck = await readDeck(deckId);
+      setDeck(newDeck);
+      setNumberOfCards(currentNumber => currentNumber + newDeck.cards.length);
+    }
+
+    getDeck();
+  }, [deckId]);
+
+  const nextButtonClickHandler = () => {
+    setCardNumber(currentCardNumber => currentCardNumber + 1);
   };
 
   return (
@@ -26,10 +32,9 @@ const Study = ({ deck, deckURL }) => {
       />
       <h1>Study: {deck.name}</h1>
       <FlashCards
-        deck={deck}
-        numOfCards={deck.cards.length}
-        cardState={cardState}
-        flipButtonHandler={flipButtonHandler}
+        numberOfCards={numberOfCards}
+        cardNumber={cardNumber}
+        nextButtonClickHandler={nextButtonClickHandler}
       />
     </div>
   );

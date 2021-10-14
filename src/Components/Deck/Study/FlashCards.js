@@ -1,20 +1,14 @@
 import React from "react";
 import Button from "../../Common/Button";
 
-const FlashCards = ({ numOfCards, cardState }) => {
-  const cardId = cardState.id;
-  // let cardText = "";
-  // cardState.front
-  //   ? (cardText = deck.cards[cardId - 1].front)
-  //   : (cardText = deck.cards[cardId - 1].back);
-
+const FlashCards = ({ numberOfCards, cardNumber, nextButtonClickHandler }) => {
   return (
     <div className="card mt-4">
       <div className="card-body">
         <div className="row">
           <div className="col">
             <h5>
-              Card {cardId} of {numOfCards}
+              Card {cardNumber} of {numberOfCards}
             </h5>
           </div>
         </div>
@@ -25,15 +19,15 @@ const FlashCards = ({ numOfCards, cardState }) => {
         </div>
         <div className="row mt-2">
           <div className="col-auto pr-0 mr-2">
-            <Button
-              variant={"secondary"}
-              type={"button"}
-              text={"Flip"}
-              // clickHandler={() => flipButtonHandler()}
-            />
+            <Button variant={"secondary"} type={"button"} text={"Flip"} />
           </div>
           <div className="col-auto p-0">
-            <Button variant={"primary"} type={"button"} text={"Next"} />
+            <Button
+              variant={"primary"}
+              type={"button"}
+              text={"Next"}
+              clickHandler={nextButtonClickHandler}
+            />
           </div>
         </div>
       </div>
