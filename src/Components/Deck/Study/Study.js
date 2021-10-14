@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { readDeck } from "../../../utils/api";
 import Breadcrumbs from "../../Common/Breadcrumbs";
 import FlashCards from "./FlashCards";
 
 const Study = ({ deckId, deckURL }) => {
+  const history = useHistory();
   const [deck, setDeck] = useState({});
   const [cardNumber, setCardNumber] = useState(1);
   const [numberOfCards, setNumberOfCards] = useState(0);
@@ -23,7 +25,18 @@ const Study = ({ deckId, deckURL }) => {
       Math.min(numberOfCards, currentCardNumber + 1)
     );
     if (numberOfCards === cardNumber) {
-      console.log("done");
+      dialogPrompt();
+    }
+  };
+
+  const dialogPrompt = () => {
+    const restart = window.confirm(`Restart cards?
+
+Click 'cancel' to return to the home page`);
+    if (restart) {
+      setCardNumber(1);
+    } else {
+      history.push("/");
     }
   };
 
