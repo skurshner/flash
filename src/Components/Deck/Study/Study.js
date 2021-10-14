@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { readDeck } from "../../../utils/api";
 import Breadcrumbs from "../../Common/Breadcrumbs";
-import Button from "../../Common/Button";
+import FlashCards from "./FlashCards";
 
 const Study = ({ deckId, deckURL }) => {
   const history = useHistory();
   const [deck, setDeck] = useState({});
-  const [cardNumber, setCardNumber] = useState(1);
+  const [cardNumber, setCardNumber] = useState(0);
   const [numberOfCards, setNumberOfCards] = useState(0);
-  //   const [flipped, setFlipped] = useState(false);
+  const [flipped, setFlipped] = useState(false);
   const [cardText, setCardText] = useState("");
 
   useEffect(() => {
@@ -23,23 +23,35 @@ const Study = ({ deckId, deckURL }) => {
     getDeck();
   }, [deckId]);
 
+  const flipButtonClickHandler = () => {
+    if (!flipped) {
+      setFlipped(true);
+      setCardText(deck.cards[cardNumber].back);
+    } else {
+      setFlipped(false);
+      setCardText(deck.cards[cardNumber].front);
+    }
+  };
+
   const nextButtonClickHandler = () => {
-    if (numberOfCards === cardNumber) {
+    if (numberOfCards === cardNumber + 1) {
       dialogPrompt();
     } else {
       setCardNumber(currentCardNumber =>
         Math.min(numberOfCards, currentCardNumber + 1)
       );
-      setCardText(deck.cards[cardNumber].front);
+      setCardText(deck.cards[cardNumber + 1].front);
+      setFlipped(false);
     }
   };
 
   const dialogPrompt = () => {
-    const restart = window.confirm(`Restart cards?
-
-Click 'cancel' to return to the home page`);
+    const restart = window.confirm(
+      "Restart cards?\n\nClick 'cancel' to return to the home page"
+    );
     if (restart) {
-      setCardNumber(1);
+      setCardNumber(0);
+      setFlipped(false);
       setCardText(deck.cards[0].front);
     } else {
       history.push("/");
@@ -55,35 +67,14 @@ Click 'cancel' to return to the home page`);
         currentPage={"Study"}
       />
       <h1>Study: {deck.name}</h1>
-      <div className="card mt-4">
-        <div className="card-body">
-          <div className="row">
-            <div className="col">
-              <h5>
-                Card {cardNumber} of {numberOfCards}
-              </h5>
-            </div>
-          </div>
-          <div className="row mt-3">
-            <div className="col">
-              <p>{cardText}</p>
-            </div>
-          </div>
-          <div className="row mt-2">
-            <div className="col-auto pr-0 mr-2">
-              <Button variant={"secondary"} type={"button"} text={"Flip"} />
-            </div>
-            <div className="col-auto p-0">
-              <Button
-                variant={"primary"}
-                type={"button"}
-                text={"Next"}
-                clickHandler={nextButtonClickHandler}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      <FlashCards
+        flipped={flipped}
+        cardNumber={cardNumber}
+        numberOfCards={numberOfCards}
+        cardText={cardText}
+        nextButtonClickHandler={nextButtonClickHandler}
+        flipButtonClickHandler={flipButtonClickHandler}
+      />
     </div>
   );
 };
