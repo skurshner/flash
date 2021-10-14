@@ -17,7 +17,7 @@ const Study = ({ deckId, deckURL }) => {
       const newDeck = await readDeck(deckId);
       setDeck(newDeck);
       setNumberOfCards(currentNumber => currentNumber + newDeck.cards.length);
-      setCardText(newDeck.cards[0].front);
+      if (newDeck.cards.length > 0) setCardText(newDeck.cards[0].front);
     }
 
     getDeck();
