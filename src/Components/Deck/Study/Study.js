@@ -19,7 +19,12 @@ const Study = ({ deckId, deckURL }) => {
   }, [deckId]);
 
   const nextButtonClickHandler = () => {
-    setCardNumber(currentCardNumber => currentCardNumber + 1);
+    setCardNumber(currentCardNumber =>
+      Math.min(numberOfCards, currentCardNumber + 1)
+    );
+    if (numberOfCards === cardNumber) {
+      console.log("done");
+    }
   };
 
   return (
