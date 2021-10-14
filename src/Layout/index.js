@@ -5,6 +5,7 @@ import Header from "./Header";
 import NotFound from "./NotFound";
 import Home from "../Components/Home/Home";
 import Deck from "../Components/Deck/Deck";
+import CreateDeck from "../Components/Deck/CreateDeck";
 
 function Layout() {
   const [decks, setDecks] = useState([]);
@@ -25,6 +26,9 @@ function Layout() {
         <Switch>
           <Route exact path={"/"}>
             <Home decks={decks} />
+          </Route>
+          <Route path={"/decks/new"}>
+            <CreateDeck />
           </Route>
           <Route path={"/decks/:deckId"}>
             <Deck />

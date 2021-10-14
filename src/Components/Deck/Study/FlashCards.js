@@ -9,8 +9,8 @@ const FlashCards = ({
   nextButtonClickHandler,
   flipButtonClickHandler,
 }) => {
-  const setNextButtonVisibility = () => {
-    return flipped ? (
+  const setNextButtonVisibility = () =>
+    flipped ? (
       <Button
         variant={"primary"}
         type={"button"}
@@ -20,7 +20,6 @@ const FlashCards = ({
     ) : (
       ""
     );
-  };
 
   if (numberOfCards < 3)
     return (
