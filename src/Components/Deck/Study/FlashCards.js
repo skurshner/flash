@@ -1,12 +1,12 @@
 import React from "react";
 import Button from "../../Common/Button";
 
-const FlashCards = ({ deck, numOfCards, cardState, flipButtonHandler }) => {
+const FlashCards = ({ numOfCards, cardState }) => {
   const cardId = cardState.id;
-  let cardText = "";
-  cardState.front
-    ? (cardText = deck.cards[cardId - 1].front)
-    : (cardText = deck.cards[cardId - 1].back);
+  // let cardText = "";
+  // cardState.front
+  //   ? (cardText = deck.cards[cardId - 1].front)
+  //   : (cardText = deck.cards[cardId - 1].back);
 
   return (
     <div className="card mt-4">
@@ -20,7 +20,7 @@ const FlashCards = ({ deck, numOfCards, cardState, flipButtonHandler }) => {
         </div>
         <div className="row mt-3">
           <div className="col">
-            <p>{cardText}</p>
+            <p>card</p>
           </div>
         </div>
         <div className="row mt-2">
@@ -29,7 +29,7 @@ const FlashCards = ({ deck, numOfCards, cardState, flipButtonHandler }) => {
               variant={"secondary"}
               type={"button"}
               text={"Flip"}
-              clickHandler={() => flipButtonHandler()}
+              // clickHandler={() => flipButtonHandler()}
             />
           </div>
           <div className="col-auto p-0">

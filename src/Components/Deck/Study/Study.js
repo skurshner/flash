@@ -4,7 +4,8 @@ import Breadcrumbs from "../../Common/Breadcrumbs";
 import FlashCards from "./FlashCards";
 
 const Study = ({ deck, deckURL }) => {
-  const [cardState, setCardState] = useState({ id: 1, front: true });
+  const initialCardState = { id: 1, front: true };
+  const [cardState, setCardState] = useState(initialCardState);
 
   const flipButtonHandler = () => {
     setCardState(currentCardState => {

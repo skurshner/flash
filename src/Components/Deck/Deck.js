@@ -1,6 +1,4 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 import { readDeck } from "../../utils/api";
 import Breadcrumbs from "../Common/Breadcrumbs";
@@ -32,7 +30,7 @@ const Deck = () => {
           <CardList deck={deck} />
         </div>
       </Route>
-      <Route path={`${url}/study`}>
+      <Route path={`/decks/:deckId/study`}>
         <Study deck={deck} deckURL={url} />
       </Route>
     </Switch>
