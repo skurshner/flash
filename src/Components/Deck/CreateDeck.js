@@ -1,38 +1,35 @@
 import React from "react";
+import { useState } from "react";
 import Breadcrumbs from "../Common/Breadcrumbs";
+import DeckForm from "./DeckForm";
+import { createDeck } from "../../utils/api";
+import { useHistory } from "react-router-dom";
 
 const CreateDeck = () => {
+  const history = useHistory();
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+
+  const handleNameChange = event => setName(event.target.value);
+  const handleDescriptionChange = event => setDescription(event.target.value);
+  const handleSubmit = async event => {
+    event.preventDefault();
+    const newDeck = { name, description };
+    const { id } = await createDeck(newDeck);
+    history.push(`/decks/${id}`);
+  };
+
   return (
     <div className="container">
       <Breadcrumbs tier={2} currentPage={"Create Deck"} />
       <h1>Create Deck</h1>
-      <form>
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            placeholder={"Deck Name"}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Description
-          </label>
-          <textarea
-            rows={4}
-            className="form-control"
-            id="description"
-            placeholder={"Breif Description of the Deck"}
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
+      <DeckForm
+        name={name}
+        description={description}
+        handleNameChange={handleNameChange}
+        handleDescriptionChange={handleDescriptionChange}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 };

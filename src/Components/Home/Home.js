@@ -1,9 +1,23 @@
 import { useHistory } from "react-router-dom";
+import { listDecks } from "../../utils/api";
 import Button from "../Common/Button";
 import DeckList from "./DeckList";
+import { useState } from "react";
+import { useEffect } from "react";
 
-const Home = ({ decks }) => {
+const Home = () => {
   const history = useHistory();
+  const [decks, setDecks] = useState([]);
+
+  useEffect(() => {
+    async function getDecks() {
+      const decksList = await listDecks();
+      setDecks(decksList);
+    }
+
+    getDecks();
+  }, []);
+
   const createButtonClickHandler = () => {
     history.push("/decks/new");
   };
