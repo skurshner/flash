@@ -22,6 +22,29 @@ const FlashCards = ({
     );
   };
 
+  if (numberOfCards < 3)
+    return (
+      <div className="container">
+        <div className="row mt-4">
+          <h3>Not Enough Cards</h3>
+        </div>
+        <div className="row mt-4">
+          <p>
+            You need at least 3 cards to study. There are only {numberOfCards}{" "}
+            cards in this deck.
+          </p>
+        </div>
+        <div className="row mt-4">
+          <Button
+            variant={"primary"}
+            type={"button"}
+            text={"Add Cards"}
+            icon={"add"}
+          />
+        </div>
+      </div>
+    );
+
   return (
     <div className="card mt-4">
       <div className="card-body">
