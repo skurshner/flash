@@ -1,6 +1,16 @@
 #root {
   background-color: #fcfcfc;
 }
+.jumbotron {
+  border-radius: 0;
+  background-image: url("/src/img/flashcards.jpeg");
+  background-color: rgba(0, 0, 0, 0.75);
+  background-blend-mode: overlay;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .card {
   background-color: #fcfcfc;
 }
