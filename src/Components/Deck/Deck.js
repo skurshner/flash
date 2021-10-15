@@ -15,7 +15,7 @@ const Deck = () => {
   const deckId = useRouteMatch().params.deckId;
 
   const [deck, setDeck] = useState({ cards: [] });
-  const [updatedDeck, setUpdatedDeck] = useState({});
+  const [updatedDeck, setUpdatedDeck] = useState({ name: "", description: "" });
 
   const initialCardState = { front: "", back: "" };
   const [newCard, setNewCard] = useState(initialCardState);
@@ -109,7 +109,7 @@ const Deck = () => {
         />
       </Route>
       <Route path={"/decks/:deckId/cards/:cardId/edit"}>
-        <EditCard />
+        <EditCard deck={deck} />
       </Route>
     </Switch>
   );
