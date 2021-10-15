@@ -10,6 +10,8 @@ const DeckHeader = ({ deck, deleteButtonClickHandler }) => {
 
   const editButtonClickHandler = () => history.push(`${url}/edit`);
 
+  const addCardsButtonClickHandler = () => history.push(`${url}/cards/new`);
+
   return (
     <div className="container my-4">
       <div className="row">
@@ -45,6 +47,7 @@ const DeckHeader = ({ deck, deleteButtonClickHandler }) => {
                 type={"button"}
                 text={"Add Cards"}
                 icon={"plus-lg"}
+                clickHandler={() => addCardsButtonClickHandler()}
               />
             </div>
           </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route, useRouteMatch, useHistory } from "react-router-dom";
 import { readDeck, deleteDeck, updateDeck } from "../../utils/api";
 import Breadcrumbs from "../Common/Breadcrumbs";
+import AddCard from "./CardView/AddCard";
 import CardList from "./DeckView/CardList";
 import DeckHeader from "./DeckView/DeckHeader";
 import EditDeck from "./EditDeck";
@@ -73,6 +74,9 @@ const Deck = () => {
       </Route>
       <Route path={"/decks/:deckId/study"}>
         <Study deckId={deckId} deckURL={url} />
+      </Route>
+      <Route path={"/decks/:deckId/cards/new"}>
+        <AddCard deck={deck} />
       </Route>
     </Switch>
   );
