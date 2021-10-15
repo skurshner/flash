@@ -1,7 +1,7 @@
 import React from "react";
 import DeckListItem from "./DeckListItem";
 
-const DeckList = ({ decks }) => {
+const DeckList = ({ decks, deleteButtonClickHandler }) => {
   const listOfDecks = decks.map(({ id, name, description, cards }, index) => {
     return (
       <div key={index}>
@@ -10,6 +10,7 @@ const DeckList = ({ decks }) => {
           name={name}
           description={description}
           numberOfCards={cards.length}
+          deleteButtonClickHandler={deleteButtonClickHandler}
         />
       </div>
     );

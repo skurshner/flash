@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { listDecks } from "../../utils/api";
+import { deleteDeck, listDecks } from "../../utils/api";
 import Button from "../Common/Button";
 import DeckList from "./DeckList";
 import { useState } from "react";
@@ -22,6 +22,12 @@ const Home = () => {
     history.push("/decks/new");
   };
 
+  const deleteButtonClickHandler = async id => {
+    await deleteDeck(id);
+    const decksList = await listDecks();
+    setDecks(decksList);
+  };
+
   return (
     <div className="container px-0">
       <Button
@@ -31,7 +37,10 @@ const Home = () => {
         icon={"add"}
         clickHandler={createButtonClickHandler}
       />
-      <DeckList decks={decks} />
+      <DeckList
+        decks={decks}
+        deleteButtonClickHandler={deleteButtonClickHandler}
+      />
     </div>
   );
 };

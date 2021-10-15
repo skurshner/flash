@@ -2,7 +2,13 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import Button from "../Common/Button";
 
-const DeckListItem = ({ id, name, description, numberOfCards }) => {
+const DeckListItem = ({
+  id,
+  name,
+  description,
+  numberOfCards,
+  deleteButtonClickHandler,
+}) => {
   const history = useHistory();
 
   const viewButtonClickHandler = id => {
@@ -53,7 +59,12 @@ const DeckListItem = ({ id, name, description, numberOfCards }) => {
             </div>
           </div>
           <div className="col-auto">
-            <Button variant={"danger"} type={"button"} icon={"trash"} />
+            <Button
+              variant={"danger"}
+              type={"button"}
+              icon={"trash"}
+              clickHandler={() => deleteButtonClickHandler(id)}
+            />
           </div>
         </div>
       </div>
