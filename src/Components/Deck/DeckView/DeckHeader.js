@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import Button from "../../Common/Button";
 
-const DeckHeader = ({ deck }) => {
+const DeckHeader = ({ deck, deleteButtonClickHandler }) => {
   const history = useHistory();
   const { url } = useRouteMatch();
 
@@ -49,7 +49,12 @@ const DeckHeader = ({ deck }) => {
           </div>
         </div>
         <div className="col-auto p-0">
-          <Button variant={"danger"} type={"button"} icon={"trash"} />
+          <Button
+            variant={"danger"}
+            type={"button"}
+            icon={"trash"}
+            clickHandler={() => deleteButtonClickHandler(deck.id)}
+          />
         </div>
       </div>
     </div>
