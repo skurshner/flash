@@ -1,9 +1,8 @@
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { deleteDeck, listDecks } from "../../utils/api";
 import Button from "../Common/Button";
 import DeckList from "./DeckList";
-import { useState } from "react";
-import { useEffect } from "react";
 
 const Home = () => {
   const history = useHistory();

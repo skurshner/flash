@@ -1,7 +1,9 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import Button from "../../Common/Button";
 
 const FlashCards = ({
+  deckId,
   flipped,
   cardNumber,
   numberOfCards,
@@ -9,6 +11,7 @@ const FlashCards = ({
   nextButtonClickHandler,
   flipButtonClickHandler,
 }) => {
+  const history = useHistory();
   const setNextButtonVisibility = () =>
     flipped ? (
       <Button
@@ -39,6 +42,7 @@ const FlashCards = ({
             type={"button"}
             text={"Add Cards"}
             icon={"plus-lg"}
+            clickHandler={() => history.push(`/decks/${deckId}/cards/new`)}
           />
         </div>
       </div>

@@ -68,6 +68,7 @@ const Study = ({ deckId, deckURL }) => {
       />
       <h1>Study: {deck.name}</h1>
       <FlashCards
+        deckId={deck.id}
         flipped={flipped}
         cardNumber={cardNumber}
         numberOfCards={numberOfCards}
