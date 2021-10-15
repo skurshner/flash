@@ -1,5 +1,4 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import Button from "../Common/Button";
 
 const DeckForm = ({
@@ -8,9 +7,8 @@ const DeckForm = ({
   handleNameChange,
   handleDescriptionChange,
   handleSubmit,
+  handleCancel,
 }) => {
-  const history = useHistory();
-
   return (
     <form onSubmit={handleSubmit}>
       <div className="mb-3">
@@ -46,7 +44,7 @@ const DeckForm = ({
             variant={"secondary"}
             type={"button"}
             text={"Cancel"}
-            clickHandler={() => history.push("/")}
+            clickHandler={handleCancel}
           />
         </div>
         <div className="col-auto px-0">

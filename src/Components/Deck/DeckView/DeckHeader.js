@@ -6,9 +6,9 @@ const DeckHeader = ({ deck, deleteButtonClickHandler }) => {
   const history = useHistory();
   const { url } = useRouteMatch();
 
-  const studyButtonClickHandler = () => {
-    history.push(`${url}/study`);
-  };
+  const studyButtonClickHandler = () => history.push(`${url}/study`);
+
+  const editButtonClickHandler = () => history.push(`${url}/edit`);
 
   return (
     <div className="container my-4">
@@ -27,6 +27,7 @@ const DeckHeader = ({ deck, deleteButtonClickHandler }) => {
                 type={"button"}
                 text={"Edit"}
                 icon={"edit"}
+                clickHandler={() => editButtonClickHandler()}
               />
             </div>
             <div className="col-auto px-0 mr-2">

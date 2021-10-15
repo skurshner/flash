@@ -7,28 +7,31 @@ import { useHistory } from "react-router-dom";
 
 const CreateDeck = () => {
   const history = useHistory();
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const [deck, setDeck] = useState({ name: "", description: "" });
 
-  const handleNameChange = event => setName(event.target.value);
-  const handleDescriptionChange = event => setDescription(event.target.value);
+  const handleNameChange = event =>
+    setDeck({ ...deck, name: event.target.value });
+  const handleDescriptionChange = event =>
+    setDeck({ ...deck, description: event.target.value });
   const handleSubmit = async event => {
     event.preventDefault();
-    const newDeck = { name, description };
-    const { id } = await createDeck(newDeck);
+    const { id } = await createDeck(deck);
     history.push(`/decks/${id}`);
   };
+
+  const handleCancel = () => history.push("/");
 
   return (
     <div className="container">
       <Breadcrumbs tier={2} currentPage={"Create Deck"} />
       <h1>Create Deck</h1>
       <DeckForm
-        name={name}
-        description={description}
+        name={deck.name}
+        description={deck.description}
         handleNameChange={handleNameChange}
         handleDescriptionChange={handleDescriptionChange}
         handleSubmit={handleSubmit}
+        handleCancel={handleCancel}
       />
     </div>
   );
