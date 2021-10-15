@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, useRouteMatch, useHistory } from "react-router-dom";
-import { readDeck, deleteDeck, updateDeck } from "../../utils/api";
+import { readDeck, deleteDeck, updateDeck, createCard } from "../../utils/api";
 import Breadcrumbs from "../Common/Breadcrumbs";
 import AddCard from "./CardView/AddCard";
 import CardList from "./DeckView/CardList";
@@ -16,6 +16,9 @@ const Deck = () => {
   const [deck, setDeck] = useState({ cards: [] });
   const [updatedDeck, setUpdatedDeck] = useState({});
 
+  const initialCardState = { front: "", back: "" };
+  const [newCard, setNewCard] = useState(initialCardState);
+
   useEffect(() => {
     async function getDeck() {
       const newDeck = await readDeck(deckId);
@@ -26,6 +29,7 @@ const Deck = () => {
     getDeck();
   }, [deckId]);
 
+  // Button handlers for modifying deck
   const deleteButtonClickHandler = async id => {
     const deleteConfirm = window.confirm(
       "Delete this deck?\n\nYou will not be able to recover it"
@@ -51,6 +55,24 @@ const Deck = () => {
     setDeck(updatedDeck);
   };
 
+  // Button handlers for adding cards
+  const handleFrontChange = event =>
+    setNewCard({ ...newCard, front: event.target.value });
+
+  const handleBackChange = event =>
+    setNewCard({ ...newCard, back: event.target.value });
+
+  const handleCardSave = async event => {
+    event.preventDefault();
+    await createCard(deck.id, newCard);
+    await setNewCard(initialCardState);
+    readDeck(deckId);
+  };
+
+  const handleDone = () => {
+    history.push(`/decks/${deckId}`);
+  };
+
   return (
     <Switch>
       <Route exact path={"/decks/:deckId"}>
@@ -60,7 +82,7 @@ const Deck = () => {
             deck={deck}
             deleteButtonClickHandler={deleteButtonClickHandler}
           />
-          <CardList deck={deck} />
+          <CardList deckId={deckId} />
         </div>
       </Route>
       <Route path={"/decks/:deckId/edit"}>
@@ -76,7 +98,14 @@ const Deck = () => {
         <Study deckId={deckId} deckURL={url} />
       </Route>
       <Route path={"/decks/:deckId/cards/new"}>
-        <AddCard deck={deck} />
+        <AddCard
+          deck={deck}
+          newCard={newCard}
+          handleFrontChange={handleFrontChange}
+          handleBackChange={handleBackChange}
+          handleCardSave={handleCardSave}
+          handleDone={handleDone}
+        />
       </Route>
     </Switch>
   );

@@ -11,8 +11,10 @@ const CreateDeck = () => {
 
   const handleNameChange = event =>
     setDeck({ ...deck, name: event.target.value });
+
   const handleDescriptionChange = event =>
     setDeck({ ...deck, description: event.target.value });
+
   const handleSubmit = async event => {
     event.preventDefault();
     const { id } = await createDeck(deck);

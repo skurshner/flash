@@ -1,7 +1,15 @@
 import React from "react";
 import Breadcrumbs from "../../Common/Breadcrumbs";
+import CardForm from "./CardForm";
 
-const AddCard = ({ deck }) => {
+const AddCard = ({
+  deck,
+  newCard,
+  handleFrontChange,
+  handleBackChange,
+  handleCardSave,
+  handleDone,
+}) => {
   return (
     <div className="container">
       <Breadcrumbs
@@ -10,7 +18,16 @@ const AddCard = ({ deck }) => {
         parentURL={`/decks/${deck.id}`}
         currentPage={"Add Card"}
       />
-      <p>Add Card</p>
+      <h1>{deck.name}: Add Card</h1>
+      <CardForm
+        card={newCard}
+        primaryButtonText={"Save"}
+        secondaryButtonText={"Done"}
+        handleFrontChange={handleFrontChange}
+        handleBackChange={handleBackChange}
+        handleSubmit={handleCardSave}
+        handleSecondaryButton={handleDone}
+      />
     </div>
   );
 };

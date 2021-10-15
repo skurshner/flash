@@ -1,13 +1,41 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import { deleteCard, readDeck } from "../../../utils/api";
 import CardListItem from "./CardListItem";
 
-const CardList = ({ deck }) => {
-  const cardsFromDeck = deck.cards;
+const CardList = ({ deckId }) => {
+  const [cards, setCards] = useState([]);
 
-  const listOfCards = cardsFromDeck.map((card, index) => {
+  useEffect(() => {
+    const getCards = async () => {
+      const { cards } = await readDeck(deckId);
+      setCards(cards);
+    };
+
+    getCards();
+  }, [deckId]);
+
+  const deleteButtonClickHandler = async id => {
+    const confirm = window.confirm(
+      "Delete this card?\n\nYou will not be able to recover it"
+    );
+    if (confirm) {
+      await deleteCard(id);
+      const { cards } = await readDeck(deckId);
+      setCards(cards);
+    }
+  };
+
+  const listOfCards = cards.map((card, index) => {
     return (
       <div key={index}>
-        <CardListItem front={card.front} back={card.back} />
+        <CardListItem
+          id={card.id}
+          front={card.front}
+          back={card.back}
+          deleteButtonClickHandler={deleteButtonClickHandler}
+        />
       </div>
     );
   });
