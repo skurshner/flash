@@ -39,7 +39,7 @@ const Home = () => {
         variant={"secondary"}
         type={"button"}
         text={"Create Deck"}
-        icon={"add"}
+        icon={"plus-lg"}
         clickHandler={createButtonClickHandler}
       />
       <DeckList

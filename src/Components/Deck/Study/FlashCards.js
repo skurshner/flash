@@ -38,7 +38,7 @@ const FlashCards = ({
             variant={"primary"}
             type={"button"}
             text={"Add Cards"}
-            icon={"add"}
+            icon={"plus-lg"}
           />
         </div>
       </div>

@@ -26,7 +26,7 @@ const DeckHeader = ({ deck, deleteButtonClickHandler }) => {
                 variant={"secondary"}
                 type={"button"}
                 text={"Edit"}
-                icon={"edit"}
+                icon={"pencil-fill"}
                 clickHandler={() => editButtonClickHandler()}
               />
             </div>
@@ -35,7 +35,7 @@ const DeckHeader = ({ deck, deleteButtonClickHandler }) => {
                 variant={"primary"}
                 type={"button"}
                 text={"Study"}
-                icon={"study"}
+                icon={"book-half"}
                 clickHandler={() => studyButtonClickHandler()}
               />
             </div>
@@ -44,7 +44,7 @@ const DeckHeader = ({ deck, deleteButtonClickHandler }) => {
                 variant={"primary"}
                 type={"button"}
                 text={"Add Cards"}
-                icon={"add"}
+                icon={"plus-lg"}
               />
             </div>
           </div>
@@ -53,7 +53,7 @@ const DeckHeader = ({ deck, deleteButtonClickHandler }) => {
           <Button
             variant={"danger"}
             type={"button"}
-            icon={"trash"}
+            icon={"trash-fill"}
             clickHandler={() => deleteButtonClickHandler(deck.id)}
           />
         </div>

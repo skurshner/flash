@@ -19,11 +19,11 @@ const CardListItem = ({ front, back }) => {
               variant={"secondary"}
               type={"button"}
               text={"Edit"}
-              icon={"edit"}
+              icon={"pencil-fill"}
             />
           </div>
           <div className="col-auto ml-0 pl-0">
-            <Button variant={"danger"} type={"button"} icon={"trash"} />
+            <Button variant={"danger"} type={"button"} icon={"trash-fill"} />
           </div>
         </div>
       </div>

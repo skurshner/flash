@@ -43,7 +43,7 @@ const DeckListItem = ({
                   variant={"secondary"}
                   type={"button"}
                   text={"View"}
-                  icon={"view"}
+                  icon={"eye-fill"}
                   clickHandler={() => viewButtonClickHandler(id)}
                 />
               </div>
@@ -52,7 +52,7 @@ const DeckListItem = ({
                   variant={"primary"}
                   type={"button"}
                   text={"Study"}
-                  icon={"study"}
+                  icon={"book-half"}
                   clickHandler={() => studyButtonClickHandler(id)}
                 />
               </div>
@@ -62,7 +62,7 @@ const DeckListItem = ({
             <Button
               variant={"danger"}
               type={"button"}
-              icon={"trash"}
+              icon={"trash-fill"}
               clickHandler={() => deleteButtonClickHandler(id)}
             />
           </div>
