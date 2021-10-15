@@ -6,42 +6,54 @@ import FlashCards from "./FlashCards";
 
 const Study = ({ deckId, deckURL }) => {
   const history = useHistory();
+  const initialCardState = { number: 0, flipped: false, text: "" };
+
   const [deck, setDeck] = useState({});
-  const [cardNumber, setCardNumber] = useState(0);
   const [numberOfCards, setNumberOfCards] = useState(0);
-  const [flipped, setFlipped] = useState(false);
-  const [cardText, setCardText] = useState("");
+  const [studyCard, setStudyCard] = useState(initialCardState);
 
   useEffect(() => {
     async function getDeck() {
       const newDeck = await readDeck(deckId);
       setDeck(newDeck);
       setNumberOfCards(currentNumber => currentNumber + newDeck.cards.length);
-      if (newDeck.cards.length > 0) setCardText(newDeck.cards[0].front);
+      if (newDeck.cards.length > 0)
+        setStudyCard(currentStudyCard => {
+          return { ...currentStudyCard, text: newDeck.cards[0].front };
+        });
     }
 
     getDeck();
   }, [deckId]);
 
   const flipButtonClickHandler = () => {
-    if (!flipped) {
-      setFlipped(true);
-      setCardText(deck.cards[cardNumber].back);
+    if (!studyCard.flipped) {
+      setStudyCard({
+        ...studyCard,
+        flipped: true,
+        text: deck.cards[studyCard.number].back,
+      });
     } else {
-      setFlipped(false);
-      setCardText(deck.cards[cardNumber].front);
+      setStudyCard({
+        ...studyCard,
+        flipped: false,
+        text: deck.cards[studyCard.number].front,
+      });
     }
   };
 
   const nextButtonClickHandler = () => {
-    if (numberOfCards === cardNumber + 1) {
+    if (numberOfCards === studyCard.number + 1) {
       dialogPrompt();
     } else {
-      setCardNumber(currentCardNumber =>
-        Math.min(numberOfCards, currentCardNumber + 1)
-      );
-      setCardText(deck.cards[cardNumber + 1].front);
-      setFlipped(false);
+      setStudyCard(currentStudyCard => {
+        return {
+          ...currentStudyCard,
+          number: Math.min(numberOfCards, studyCard.number + 1),
+          text: deck.cards[studyCard.number + 1].front,
+          flipped: false,
+        };
+      });
     }
   };
 
@@ -50,9 +62,12 @@ const Study = ({ deckId, deckURL }) => {
       "Restart cards?\n\nClick 'cancel' to return to the home page"
     );
     if (restart) {
-      setCardNumber(0);
-      setFlipped(false);
-      setCardText(deck.cards[0].front);
+      setStudyCard({
+        ...studyCard,
+        number: 0,
+        flipped: false,
+        text: deck.cards[0].front,
+      });
     } else {
       history.push("/");
     }
@@ -69,10 +84,10 @@ const Study = ({ deckId, deckURL }) => {
       <h1>Study: {deck.name}</h1>
       <FlashCards
         deckId={deck.id}
-        flipped={flipped}
-        cardNumber={cardNumber}
+        flipped={studyCard.flipped}
+        cardNumber={studyCard.number}
         numberOfCards={numberOfCards}
-        cardText={cardText}
+        cardText={studyCard.text}
         nextButtonClickHandler={nextButtonClickHandler}
         flipButtonClickHandler={flipButtonClickHandler}
       />
