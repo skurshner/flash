@@ -11,7 +11,6 @@ import Study from "./Study/Study";
 
 const Deck = () => {
   const history = useHistory();
-  const { url } = useRouteMatch();
   const deckId = useRouteMatch().params.deckId;
 
   const [deck, setDeck] = useState({ cards: [] });
@@ -96,7 +95,7 @@ const Deck = () => {
         />
       </Route>
       <Route path={"/decks/:deckId/study"}>
-        <Study deckId={deckId} deckURL={url} />
+        <Study deckId={deckId} />
       </Route>
       <Route path={"/decks/:deckId/cards/new"}>
         <AddCard

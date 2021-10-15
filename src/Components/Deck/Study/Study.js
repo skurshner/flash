@@ -4,7 +4,7 @@ import { readDeck } from "../../../utils/api";
 import Breadcrumbs from "../../Common/Breadcrumbs";
 import FlashCards from "./FlashCards";
 
-const Study = ({ deckId, deckURL }) => {
+const Study = ({ deckId }) => {
   const history = useHistory();
   const initialCardState = { number: 0, flipped: false, text: "" };
 
@@ -78,7 +78,7 @@ const Study = ({ deckId, deckURL }) => {
       <Breadcrumbs
         tier={3}
         parentPage={deck.name}
-        parentURL={deckURL}
+        parentURL={`/decks/${deckId}`}
         currentPage={"Study"}
       />
       <h1>Study: {deck.name}</h1>

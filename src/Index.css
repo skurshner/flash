@@ -1,0 +1,12 @@
+#root {
+  background-color: #fcfcfc;
+}
+.card {
+  background-color: #fcfcfc;
+}
+
+.card:hover {
+  background-color: #ffffff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+  transition: all 300ms;
+}
