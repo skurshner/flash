@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRouteMatch, useHistory } from "react-router-dom";
-import { deleteCard, readDeck } from "../../../utils/api";
+import { deleteCard, readDeck } from "../../utils/api";
 import CardListItem from "./CardListItem";
 
 const CardList = ({ deckId }) => {

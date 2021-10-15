@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route, useRouteMatch, useHistory } from "react-router-dom";
 import { readDeck, deleteDeck, updateDeck, createCard } from "../../utils/api";
 import Breadcrumbs from "../Common/Breadcrumbs";
-import AddCard from "./CardView/AddCard";
-import EditCard from "./CardView/EditCard";
-import CardList from "./DeckView/CardList";
-import DeckHeader from "./DeckView/DeckHeader";
+import AddCard from "./Card/AddCard";
+import EditCard from "./Card/EditCard";
+import CardList from "./CardList";
+import DeckHeader from "./DeckHeader";
 import EditDeck from "./EditDeck";
 import Study from "./Study/Study";
 

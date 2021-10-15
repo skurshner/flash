@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
-import Button from "../../Common/Button";
+import Button from "../Common/Button";
 
 const DeckHeader = ({ deck, deleteButtonClickHandler }) => {
   const history = useHistory();
