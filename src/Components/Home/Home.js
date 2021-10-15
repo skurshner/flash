@@ -23,9 +23,14 @@ const Home = () => {
   };
 
   const deleteButtonClickHandler = async id => {
-    await deleteDeck(id);
-    const decksList = await listDecks();
-    setDecks(decksList);
+    const deleteConfirm = window.confirm(
+      "Delete this deck?\n\nYou will not be able to recover it"
+    );
+    if (deleteConfirm) {
+      await deleteDeck(id);
+      const decksList = await listDecks();
+      setDecks(decksList);
+    }
   };
 
   return (
