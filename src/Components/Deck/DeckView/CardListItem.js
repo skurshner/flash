@@ -1,7 +1,13 @@
 import React from "react";
 import Button from "../../Common/Button";
 
-const CardListItem = ({ id, front, back, deleteButtonClickHandler }) => {
+const CardListItem = ({
+  id,
+  front,
+  back,
+  deleteButtonClickHandler,
+  editButtonClickHandler,
+}) => {
   return (
     <div className="card mb-2">
       <div className="card-body">
@@ -20,6 +26,7 @@ const CardListItem = ({ id, front, back, deleteButtonClickHandler }) => {
               type={"button"}
               text={"Edit"}
               icon={"pencil-fill"}
+              clickHandler={() => editButtonClickHandler(id)}
             />
           </div>
           <div className="col-auto ml-0 pl-0">

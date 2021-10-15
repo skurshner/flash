@@ -3,6 +3,7 @@ import { Switch, Route, useRouteMatch, useHistory } from "react-router-dom";
 import { readDeck, deleteDeck, updateDeck, createCard } from "../../utils/api";
 import Breadcrumbs from "../Common/Breadcrumbs";
 import AddCard from "./CardView/AddCard";
+import EditCard from "./CardView/EditCard";
 import CardList from "./DeckView/CardList";
 import DeckHeader from "./DeckView/DeckHeader";
 import EditDeck from "./EditDeck";
@@ -106,6 +107,9 @@ const Deck = () => {
           handleCardSave={handleCardSave}
           handleDone={handleDone}
         />
+      </Route>
+      <Route path={"/decks/:deckId/cards/:cardId/edit"}>
+        <EditCard />
       </Route>
     </Switch>
   );

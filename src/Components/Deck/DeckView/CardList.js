@@ -1,10 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useRouteMatch, useHistory } from "react-router-dom";
 import { deleteCard, readDeck } from "../../../utils/api";
 import CardListItem from "./CardListItem";
 
 const CardList = ({ deckId }) => {
+  const { url } = useRouteMatch();
+  const history = useHistory();
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
@@ -27,6 +30,8 @@ const CardList = ({ deckId }) => {
     }
   };
 
+  const editButtonClickHandler = id => history.push(`${url}/cards/${id}/edit`);
+
   const listOfCards = cards.map((card, index) => {
     return (
       <div key={index}>
@@ -34,6 +39,7 @@ const CardList = ({ deckId }) => {
           id={card.id}
           front={card.front}
           back={card.back}
+          editButtonClickHandler={editButtonClickHandler}
           deleteButtonClickHandler={deleteButtonClickHandler}
         />
       </div>
