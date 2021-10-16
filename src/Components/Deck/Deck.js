@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route, useRouteMatch, useHistory } from "react-router-dom";
 import { readDeck, deleteDeck, updateDeck, createCard } from "../../utils/api";
 import Breadcrumbs from "../Common/Breadcrumbs";
-import AddCard from "./Card/AddCard";
+import CreateCard from "./Card/CreateCard";
 import EditCard from "./Card/EditCard";
 import CardList from "./CardList";
 import DeckHeader from "./DeckHeader";
@@ -99,7 +99,7 @@ const Deck = () => {
         <Study deckId={deckId} />
       </Route>
       <Route path={"/decks/:deckId/cards/new"}>
-        <AddCard
+        <CreateCard
           deck={deck}
           newCard={newCard}
           handleFrontChange={handleFrontChange}

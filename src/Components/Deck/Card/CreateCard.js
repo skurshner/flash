@@ -2,7 +2,7 @@ import React from "react";
 import Breadcrumbs from "../../Common/Breadcrumbs";
 import CardForm from "./CardForm";
 
-const AddCard = ({
+const CreateCard = ({
   deck,
   newCard,
   handleFrontChange,
@@ -32,4 +32,4 @@ const AddCard = ({
   );
 };
 
-export default AddCard;
+export default CreateCard;
