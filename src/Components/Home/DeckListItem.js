@@ -11,6 +11,7 @@ const DeckListItem = ({
 }) => {
   const history = useHistory();
 
+  // button handlers
   const viewButtonClickHandler = id => {
     history.push(`decks/${id}`);
   };
