@@ -8,15 +8,13 @@ const Study = ({ deckId }) => {
   const history = useHistory();
   const initialCardState = { number: 0, flipped: false, text: "" };
 
-  const [deck, setDeck] = useState({});
-  const [numberOfCards, setNumberOfCards] = useState(0);
+  const [deck, setDeck] = useState({ cards: [] });
   const [studyCard, setStudyCard] = useState(initialCardState);
 
   useEffect(() => {
     async function getDeck() {
       const newDeck = await readDeck(deckId);
       setDeck(newDeck);
-      setNumberOfCards(currentNumber => currentNumber + newDeck.cards.length);
       if (newDeck.cards.length > 0)
         setStudyCard(currentStudyCard => {
           return { ...currentStudyCard, text: newDeck.cards[0].front };
@@ -43,13 +41,13 @@ const Study = ({ deckId }) => {
   };
 
   const nextButtonClickHandler = () => {
-    if (numberOfCards === studyCard.number + 1) {
+    if (deck.cards.length === studyCard.number + 1) {
       dialogPrompt();
     } else {
       setStudyCard(currentStudyCard => {
         return {
           ...currentStudyCard,
-          number: Math.min(numberOfCards, studyCard.number + 1),
+          number: Math.min(deck.cards.length, studyCard.number + 1),
           text: deck.cards[studyCard.number + 1].front,
           flipped: false,
         };
@@ -86,7 +84,7 @@ const Study = ({ deckId }) => {
         deckId={deck.id}
         flipped={studyCard.flipped}
         cardNumber={studyCard.number}
-        numberOfCards={numberOfCards}
+        numberOfCards={deck.cards.length}
         cardText={studyCard.text}
         nextButtonClickHandler={nextButtonClickHandler}
         flipButtonClickHandler={flipButtonClickHandler}

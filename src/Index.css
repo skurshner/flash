@@ -11,6 +11,17 @@
   background-size: cover;
 }
 
+.card.flashcard {
+  background-color: #fafafa;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+}
+
+.card.flashcard:hover {
+  background-color: #fafafa;
+  transition: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+}
+
 .card {
   background-color: #fcfcfc;
 }

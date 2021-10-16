@@ -49,7 +49,7 @@ const FlashCards = ({
     );
 
   return (
-    <div className="card mt-4">
+    <div className="card flashcard mt-4">
       <div className="card-body">
         <div className="row">
           <div className="col">
