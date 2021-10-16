@@ -11,6 +11,7 @@ const Study = ({ deckId }) => {
   const [deck, setDeck] = useState({ cards: [] });
   const [studyCard, setStudyCard] = useState(initialCardState);
 
+  // get deck data from it's id, set deck state only when there are cards
   useEffect(() => {
     async function getDeck() {
       const newDeck = await readDeck(deckId);
@@ -24,6 +25,7 @@ const Study = ({ deckId }) => {
     getDeck();
   }, [deckId]);
 
+  // button handlers
   const flipButtonClickHandler = () => {
     if (!studyCard.flipped) {
       setStudyCard({
@@ -54,7 +56,7 @@ const Study = ({ deckId }) => {
       });
     }
   };
-
+  // prompt user sees when reaching end of the deck
   const dialogPrompt = () => {
     const restart = window.confirm(
       "Restart cards?\n\nClick 'cancel' to return to the home page"

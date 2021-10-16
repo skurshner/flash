@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Breadcrumbs = ({ tier, parentPage, parentURL, currentPage }) => {
+  // Returns either 2 or 3 tiers
   if (tier === 2) {
     return (
       <nav aria-label="breadcrumb">

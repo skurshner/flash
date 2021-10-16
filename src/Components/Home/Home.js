@@ -8,6 +8,7 @@ const Home = () => {
   const history = useHistory();
   const [decks, setDecks] = useState([]);
 
+  // get all decks and set state
   useEffect(() => {
     async function getDecks() {
       const decksList = await listDecks();
@@ -17,6 +18,7 @@ const Home = () => {
     getDecks();
   }, []);
 
+  // button handlers
   const createButtonClickHandler = () => {
     history.push("/decks/new");
   };

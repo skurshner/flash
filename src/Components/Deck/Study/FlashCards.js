@@ -12,6 +12,8 @@ const FlashCards = ({
   flipButtonClickHandler,
 }) => {
   const history = useHistory();
+
+  // Next button is only visible when viewing back of card
   const setNextButtonVisibility = () =>
     flipped ? (
       <Button
@@ -24,6 +26,7 @@ const FlashCards = ({
       ""
     );
 
+  // display instead of cards if there are fewer than 3 in deck
   if (numberOfCards < 3)
     return (
       <div className="container">

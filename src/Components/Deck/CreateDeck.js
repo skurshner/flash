@@ -8,6 +8,7 @@ const CreateDeck = () => {
   const history = useHistory();
   const [deck, setDeck] = useState({ name: "", description: "" });
 
+  // form and button handlers
   const handleNameChange = event =>
     setDeck({ ...deck, name: event.target.value });
 

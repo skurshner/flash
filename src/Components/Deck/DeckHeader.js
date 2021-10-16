@@ -6,6 +6,7 @@ const DeckHeader = ({ deck, deleteButtonClickHandler }) => {
   const history = useHistory();
   const { url } = useRouteMatch();
 
+  // button handlers
   const studyButtonClickHandler = () => history.push(`${url}/study`);
 
   const editButtonClickHandler = () => history.push(`${url}/edit`);

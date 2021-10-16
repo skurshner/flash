@@ -19,6 +19,7 @@ const Deck = () => {
   const initialCardState = { front: "", back: "" };
   const [newCard, setNewCard] = useState(initialCardState);
 
+  // get deck data by it's id and set deck and updated deck state
   useEffect(() => {
     async function getDeck() {
       const newDeck = await readDeck(deckId);

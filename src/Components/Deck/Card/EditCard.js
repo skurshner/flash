@@ -9,6 +9,7 @@ const EditCard = ({ deck }) => {
   const cardId = useRouteMatch().params.cardId;
   const [card, setCard] = useState({});
 
+  // get card data from it's id and set state
   useEffect(() => {
     const getCard = async id => {
       const card = await readCard(id);
@@ -18,6 +19,7 @@ const EditCard = ({ deck }) => {
     getCard(cardId);
   }, [cardId]);
 
+  // form and button handlers
   const handleFrontUpdate = event =>
     setCard({ ...card, front: event.target.value });
 

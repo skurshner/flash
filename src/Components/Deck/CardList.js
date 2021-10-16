@@ -8,6 +8,7 @@ const CardList = ({ deckId }) => {
   const history = useHistory();
   const [cards, setCards] = useState([]);
 
+  // get deck data by it's id
   useEffect(() => {
     const getCards = async () => {
       const { cards } = await readDeck(deckId);
@@ -17,6 +18,7 @@ const CardList = ({ deckId }) => {
     getCards();
   }, [deckId]);
 
+  // button handlers
   const deleteButtonClickHandler = async id => {
     const confirm = window.confirm(
       "Delete this card?\n\nYou will not be able to recover it"
@@ -30,6 +32,7 @@ const CardList = ({ deckId }) => {
 
   const editButtonClickHandler = id => history.push(`${url}/cards/${id}/edit`);
 
+  // displays list of cards in deck
   const listOfCards = cards.map((card, index) => {
     return (
       <div key={index}>
@@ -43,6 +46,7 @@ const CardList = ({ deckId }) => {
       </div>
     );
   });
+
   return (
     <div className="container py-2 px-0">
       <h4>Cards</h4>
