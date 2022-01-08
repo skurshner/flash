@@ -2,9 +2,9 @@ import React from "react";
 import DeckListItem from "./DeckListItem";
 
 const DeckList = ({ decks, deleteButtonClickHandler }) => {
-  const listOfDecks = decks.map(({ id, name, description, cards }, index) => {
+  const listOfDecks = decks.map(({ id, name, description, cards }) => {
     return (
-      <div key={index}>
+      <div className="flex items-stretch" key={id}>
         <DeckListItem
           id={id}
           name={name}
@@ -15,7 +15,11 @@ const DeckList = ({ decks, deleteButtonClickHandler }) => {
       </div>
     );
   });
-  return <div className="container px-0 py-3">{listOfDecks}</div>;
+  return (
+    <div className="mt-4 grid items-stretch grid-cols-1 sm:grid-cols-2 sm:gap-2">
+      {listOfDecks}
+    </div>
+  );
 };
 
 export default DeckList;

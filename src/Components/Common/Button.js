@@ -11,21 +11,20 @@ const Button = ({
 }) => {
   // determine which variant of button to use
   const defaultButtonStyle =
-    "py-3 px-4 text-base font-semibold rounded-md shadow";
+    "flex justify-center text-base font-semibold rounded-md";
 
-  const getButtonStyle = variant =>
-    variant === "primary"
-      ? `${defaultButtonStyle} bg-indigo-50 text-indigo-600`
-      : "";
+  const buttonStyle = {
+    primary: `${defaultButtonStyle} py-3 px-4 bg-indigo-50 text-indigo-600 shadow hover:bg-indigo-200 active:bg-indigo-300`,
+    secondary: `${defaultButtonStyle} py-3 px-4 bg-indigo-600 text-indigo-50 shadow`,
+    icon: `${defaultButtonStyle} p-3 text-indigo-50 hover:bg-indigo-600`,
+  };
 
-  const getFullWidth = fullWidth ? "w-full" : "";
+  const getFullWidth = fullWidth ? "w-full sm:w-auto" : "";
 
   return (
     <button
       type={type}
-      className={`flex justify-center ${getButtonStyle(
-        variant
-      )} ${getFullWidth}`}
+      className={` ${buttonStyle[variant]} ${getFullWidth}`}
       onClick={clickHandler}
     >
       <Icon

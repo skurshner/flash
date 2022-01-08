@@ -2,7 +2,7 @@ import React from "react";
 
 function Header() {
   return (
-    <header className="p-6 bg-gradient-to-br from-indigo-800  to-indigo-500">
+    <header className="px-4 py-6 bg-gradient-to-br from-indigo-800  to-indigo-500">
       <div className="flex items-center ">
         <svg
           xmlns="http://www.w3.org/2000/svg"

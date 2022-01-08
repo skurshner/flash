@@ -36,8 +36,9 @@ const Home = () => {
 
   return (
     <div className="p-4 flex-col items-stretch">
-      <h1 className="mt-2  text-3xl font-bold text-slate-700">All Decks</h1>
-      <div className="py-4">
+      <div className="flex justify-between">
+        <h1 className="mt-2 text-3xl font-bold text-slate-700">All Decks</h1>
+
         <Button
           variant={"primary"}
           fullWidth={true}
@@ -47,7 +48,6 @@ const Home = () => {
           clickHandler={createButtonClickHandler}
         />
       </div>
-
       <DeckList
         decks={decks}
         deleteButtonClickHandler={deleteButtonClickHandler}
