@@ -1,27 +1,38 @@
 import React from "react";
+import Icon from "./Icons";
 
-const Button = ({ variant, type, text = "", icon = "", clickHandler }) => {
+const Button = ({
+  variant,
+  fullWidth = false,
+  type,
+  text = "",
+  icon = "",
+  clickHandler,
+}) => {
   // determine which variant of button to use
-  const getButtonStyle = variant => `btn btn-${variant} btn-lg`;
+  const defaultButtonStyle =
+    "py-3 px-4 text-base font-semibold rounded-md shadow";
 
-  // set the icon for the button, trash icon has no margin
-  const getIcon = icon => {
-    if (icon === "trash-fill") {
-      return `bi bi-${icon}`;
-    } else if (icon) {
-      return `bi bi-${icon} mr-2`;
-    } else {
-      return "";
-    }
-  };
+  const getButtonStyle = variant =>
+    variant === "primary"
+      ? `${defaultButtonStyle} bg-indigo-50 text-indigo-600`
+      : "";
+
+  const getFullWidth = fullWidth ? "w-full" : "";
 
   return (
     <button
       type={type}
-      className={getButtonStyle(variant)}
+      className={`flex justify-center ${getButtonStyle(
+        variant
+      )} ${getFullWidth}`}
       onClick={clickHandler}
     >
-      <i className={getIcon(icon)}></i>
+      <Icon
+        name={icon}
+        margin={!!text}
+        color={variant === "primary" ? "dark" : "light"}
+      />
       {text}
     </button>
   );

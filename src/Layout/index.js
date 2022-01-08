@@ -10,7 +10,7 @@ function Layout() {
   return (
     <>
       <Header />
-      <div className="container">
+      <div className="bg-slate-100 h-screen">
         <Switch>
           <Route exact path={"/"}>
             <Home />

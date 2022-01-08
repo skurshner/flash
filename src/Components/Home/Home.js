@@ -35,14 +35,19 @@ const Home = () => {
   };
 
   return (
-    <div className="container px-0">
-      <Button
-        variant={"secondary"}
-        type={"button"}
-        text={"Create Deck"}
-        icon={"plus-lg"}
-        clickHandler={createButtonClickHandler}
-      />
+    <div className="p-4 flex-col items-stretch">
+      <h1 className="mt-2  text-3xl font-bold text-slate-700">All Decks</h1>
+      <div className="py-4">
+        <Button
+          variant={"primary"}
+          fullWidth={true}
+          type={"button"}
+          text={"Make a New Deck"}
+          icon={"add"}
+          clickHandler={createButtonClickHandler}
+        />
+      </div>
+
       <DeckList
         decks={decks}
         deleteButtonClickHandler={deleteButtonClickHandler}
