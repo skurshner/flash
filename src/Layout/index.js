@@ -11,20 +11,22 @@ function Layout() {
     <>
       <Header />
       <div className="bg-slate-100 h-screen">
-        <Switch>
-          <Route exact path={"/"}>
-            <Home />
-          </Route>
-          <Route path={"/decks/new"}>
-            <CreateDeck />
-          </Route>
-          <Route path={"/decks/:deckId"}>
-            <Deck />
-          </Route>
-          <Route>
-            <NotFound />
-          </Route>
-        </Switch>
+        <div className="mx-auto max-w-screen-xl">
+          <Switch>
+            <Route exact path={"/"}>
+              <Home />
+            </Route>
+            <Route path={"/decks/new"}>
+              <CreateDeck />
+            </Route>
+            <Route path={"/decks/:deckId"}>
+              <Deck />
+            </Route>
+            <Route>
+              <NotFound />
+            </Route>
+          </Switch>
+        </div>
       </div>
     </>
   );

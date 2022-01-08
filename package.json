@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^6.4.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -12,10 +11,10 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "4.0.0"
+    "react-scripts": "5.0.0"
   },
   "scripts": {
-    "build": "craco build",
+    "build": "react-scripts build",
     "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
     "docker:build": "docker image build . -t thinkful-ed/zid-fe-project-flashcards-01-qualified",
     "docker:run": "docker run --rm -it -p 3000:3000 thinkful-ed/zid-fe-project-flashcards-01-qualified",
@@ -23,10 +22,10 @@
     "docker:test": "docker run -t  thinkful-ed/zid-fe-project-flashcards-01-qualified npm test",
     "eject": "react-scripts eject",
     "start": "concurrently \"npm run start:server\" \"npm run start:react\"",
-    "start:react": "craco start",
+    "start:react": "react-scripts start",
     "start:server": "json-server ./data/db.json",
     "start:solution": "npm run -it docker:build && npm run docker:run",
-    "test": "craco test",
+    "test": "react-scripts test",
     "test:solution": "npm run docker:build && npm run docker:test"
   },
   "eslintConfig": {
@@ -45,11 +44,10 @@
     ]
   },
   "devDependencies": {
-    "@tailwindcss/postcss7-compat": "^2.2.17",
-    "autoprefixer": "^9.8.8",
+    "autoprefixer": "^10.4.2",
     "concurrently": "^5.3.0",
     "json-server": "^0.16.1",
-    "postcss": "^7.0.39",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.12"
   }
 }

@@ -41,7 +41,6 @@ const Home = () => {
 
         <Button
           variant={"primary"}
-          fullWidth={true}
           type={"button"}
           text={"Make a New Deck"}
           icon={"add"}

@@ -16,7 +16,7 @@ const DeckList = ({ decks, deleteButtonClickHandler }) => {
     );
   });
   return (
-    <div className="mt-4 grid items-stretch grid-cols-1 sm:grid-cols-2 sm:gap-2">
+    <div className="mt-4 grid items-stretch grid-cols-1 sm:grid-cols-2 sm:gap-2 lg:grid-cols-3">
       {listOfDecks}
     </div>
   );

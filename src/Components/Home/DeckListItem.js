@@ -21,7 +21,7 @@ const DeckListItem = ({
   };
 
   return (
-    <div className="p-4 mb-2 bg-gradient-to-br from-indigo-800 to-indigo-700 rounded-md shadow-sm">
+    <div className="w-full p-4 mb-2 bg-gradient-to-br from-indigo-700 to-indigo-800 rounded-md shadow-sm">
       <div className="mr-4 flex justify-between items-baseline">
         <h2 className="text-2xl font-semibold text-indigo-50">{name}</h2>
         <div className="flex">
