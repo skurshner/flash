@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, useRouteMatch, useHistory } from "react-router-dom";
 import { readDeck, deleteDeck, updateDeck, createCard } from "../../utils/api";
-import Breadcrumbs from "../Common/Breadcrumbs";
+import Button from "../Common/Button";
 import CreateCard from "./Card/CreateCard";
 import EditCard from "./Card/EditCard";
 import CardList from "./CardList";
@@ -11,7 +11,7 @@ import Study from "./Study/Study";
 
 const Deck = () => {
   const history = useHistory();
-  const deckId = useRouteMatch().params.deckId;
+  const { deckId } = useRouteMatch().params;
 
   const [deck, setDeck] = useState({ cards: [] });
   const [updatedDeck, setUpdatedDeck] = useState({ name: "", description: "" });
@@ -40,6 +40,8 @@ const Deck = () => {
       history.push("/");
     }
   };
+
+  const addCardsButtonClickHandler = () => history.push(`${deckId}/cards/new`);
 
   const handleNameChange = event => {
     setUpdatedDeck({ ...updatedDeck, name: event.target.value });
@@ -77,14 +79,18 @@ const Deck = () => {
   return (
     <Switch>
       <Route exact path={"/decks/:deckId"}>
-        <div className="container">
-          <Breadcrumbs tier={2} currentPage={deck.name} />
-          <DeckHeader
-            deck={deck}
-            deleteButtonClickHandler={deleteButtonClickHandler}
-          />
-          <CardList deckId={deckId} />
-        </div>
+        <DeckHeader
+          deck={deck}
+          deleteButtonClickHandler={deleteButtonClickHandler}
+        />
+        <CardList deckId={deckId} />
+        <Button
+          variant={"primary"}
+          type={"button"}
+          text={"Add Cards"}
+          icon={"plus-lg"}
+          clickHandler={() => addCardsButtonClickHandler()}
+        />
       </Route>
       <Route path={"/decks/:deckId/edit"}>
         <EditDeck

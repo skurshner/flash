@@ -8,7 +8,7 @@ import Layout from "./Layout";
 
 function App() {
   return (
-    <div className="app-routes">
+    <div className="app-routes bg-slate-50 h-screen">
       <Switch>
         <Route path="/">
           <Layout />

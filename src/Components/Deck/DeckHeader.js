@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import Button from "../Common/Button";
+import UtilityBar from "../Common/UtilityBar";
 
 const DeckHeader = ({ deck, deleteButtonClickHandler }) => {
   const history = useHistory();
@@ -11,54 +12,25 @@ const DeckHeader = ({ deck, deleteButtonClickHandler }) => {
 
   const editButtonClickHandler = () => history.push(`${url}/edit`);
 
-  const addCardsButtonClickHandler = () => history.push(`${url}/cards/new`);
-
   return (
-    <div className="container my-4">
-      <div className="row">
-        <h2>{deck.name}</h2>
-      </div>
-      <div className="row">
-        <p>{deck.description}</p>
-      </div>
-      <div className="row justify-content-between my-3">
-        <div className="col-auto p-0">
-          <div className="row">
-            <div className="col-auto pr-0 mr-2">
-              <Button
-                variant={"secondary"}
-                type={"button"}
-                text={"Edit"}
-                icon={"pencil-fill"}
-                clickHandler={() => editButtonClickHandler()}
-              />
-            </div>
-            <div className="col-auto px-0 mr-2">
-              <Button
-                variant={"primary"}
-                type={"button"}
-                text={"Study"}
-                icon={"book-half"}
-                clickHandler={() => studyButtonClickHandler()}
-              />
-            </div>
-            <div className="col-auto px-0">
-              <Button
-                variant={"primary"}
-                type={"button"}
-                text={"Add Cards"}
-                icon={"plus-lg"}
-                clickHandler={() => addCardsButtonClickHandler()}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="col-auto p-0">
+    <div>
+      <UtilityBar
+        deck={true}
+        editButtonClickHandler={editButtonClickHandler}
+        deleteButtonClickHandler={deleteButtonClickHandler}
+      />
+      <div className="mx-auto max-w-screen-xl p-4">
+        <h2 className="text-3xl font-bold text-slate-700">{deck.name}</h2>
+
+        <p className=" mt-3 text-slate-700">{deck.description}</p>
+        <div className="mt-4 sm:w-40 sm:flex sm:flex-col sm:items-stretch">
           <Button
-            variant={"danger"}
+            variant={"secondary"}
             type={"button"}
-            icon={"trash-fill"}
-            clickHandler={() => deleteButtonClickHandler(deck.id)}
+            fullWidth={true}
+            text={"Study"}
+            icon={"study"}
+            clickHandler={() => studyButtonClickHandler()}
           />
         </div>
       </div>
