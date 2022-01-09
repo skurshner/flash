@@ -37,7 +37,7 @@ const Home = () => {
   return (
     <div className="px-4 mx-auto max-w-screen-xl flex-col items-stretch">
       <div className="pt-2 flex justify-between items-center flex-wrap ">
-        <h1 className="my-4 text-3xl font-bold text-slate-700">All Decks</h1>
+        <h1 className="my-4 text-3xl font-bold text-slate-700">My Decks</h1>
         <Button
           variant={"primary"}
           fullWidth={true}

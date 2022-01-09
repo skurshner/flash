@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { createDeck } from "../../utils/api";
-import Breadcrumbs from "../Common/Breadcrumbs";
+import UtilityBar from "../Common/UtilityBar.js";
 import DeckForm from "./DeckForm";
 
 const CreateDeck = () => {
@@ -24,18 +24,22 @@ const CreateDeck = () => {
   const handleCancel = () => history.push("/");
 
   return (
-    <div className="container">
-      <Breadcrumbs tier={2} currentPage={"Create Deck"} />
-      <h1>Create Deck</h1>
-      <DeckForm
-        name={deck.name}
-        description={deck.description}
-        handleNameChange={handleNameChange}
-        handleDescriptionChange={handleDescriptionChange}
-        handleSubmit={handleSubmit}
-        handleCancel={handleCancel}
-      />
-    </div>
+    <>
+      <UtilityBar />
+      <div className="mx-auto p-4 w-full max-w-screen-md">
+        <h1 className="text-3xl font-semibold text-slate-700">
+          Make a New Deck
+        </h1>
+        <DeckForm
+          name={deck.name}
+          description={deck.description}
+          handleNameChange={handleNameChange}
+          handleDescriptionChange={handleDescriptionChange}
+          handleSubmit={handleSubmit}
+          handleCancel={handleCancel}
+        />
+      </div>
+    </>
   );
 };
 

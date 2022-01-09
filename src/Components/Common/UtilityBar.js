@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Button from "./Button";
 
 const UtilityBar = ({
@@ -9,6 +9,7 @@ const UtilityBar = ({
   backURL = "home",
 }) => {
   const history = useHistory();
+  const { deckId } = useParams();
 
   const showDeckButtons = () =>
     deck && (
@@ -21,7 +22,7 @@ const UtilityBar = ({
         <Button
           variant="utility"
           icon="trash"
-          clickHandler={deleteButtonClickHandler}
+          clickHandler={() => deleteButtonClickHandler(deckId)}
         />
       </div>
     );
