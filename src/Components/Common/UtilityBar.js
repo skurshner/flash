@@ -16,12 +16,12 @@ const UtilityBar = ({
         <Button
           variant="utility"
           icon="edit"
-          clickHandler={() => editButtonClickHandler()}
+          clickHandler={editButtonClickHandler}
         />
         <Button
           variant="utility"
           icon="trash"
-          clickHandler={() => deleteButtonClickHandler()}
+          clickHandler={deleteButtonClickHandler}
         />
       </div>
     );

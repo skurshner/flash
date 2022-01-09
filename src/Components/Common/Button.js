@@ -16,11 +16,20 @@ const Button = ({
   const buttonStyle = {
     primary: `${defaultButtonStyle} py-3 px-4 bg-indigo-50 text-indigo-600 shadow hover:bg-indigo-100 active:bg-indigo-200`,
     secondary: `${defaultButtonStyle} py-3 px-4 bg-indigo-600 text-indigo-50 hover:bg-indigo-700 active:bg-indigo-800 shadow`,
+    outline: `${defaultButtonStyle} py-2.5 px-3.5 bg-indigo-50 text-indigo-600 hover:bg-indigo-100 active:bg-indigo-200 shadow border-2 border-indigo-600`,
     icon: `${defaultButtonStyle} p-3 text-indigo-50 hover:bg-indigo-600`,
     utility: `${defaultButtonStyle} p-3 text-indigo-600 hover:bg-indigo-200 active:bg-indigo-300`,
   };
 
   const getFullWidth = fullWidth ? "w-full sm:w-auto" : "";
+
+  const iconStyle = {
+    primary: "dark",
+    secondary: "light",
+    outline: "dark",
+    icon: "light",
+    utility: "dark",
+  };
 
   return (
     <button
@@ -28,13 +37,7 @@ const Button = ({
       className={` ${buttonStyle[variant]} ${getFullWidth}`}
       onClick={clickHandler}
     >
-      <Icon
-        name={icon}
-        margin={!!text}
-        color={
-          variant === "primary" || variant === "utility" ? "dark" : "light"
-        }
-      />
+      <Icon name={icon} margin={!!text} color={iconStyle[variant]} />
       {text}
     </button>
   );

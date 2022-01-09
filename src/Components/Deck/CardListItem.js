@@ -28,9 +28,9 @@ const CardListItem = ({
 
       <div className="flex justify-between">
         <Button
-          variant={"secondary"}
+          variant={"outline"}
           text={"Edit"}
-          icon={"pencil-fill"}
+          icon={"edit"}
           clickHandler={() => editButtonClickHandler(id)}
         />
 

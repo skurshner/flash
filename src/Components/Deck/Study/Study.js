@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { readDeck } from "../../../utils/api";
-import Breadcrumbs from "../../Common/Breadcrumbs";
+import UtilityBar from "../../Common/UtilityBar";
 import FlashCards from "./FlashCards";
 
 const Study = ({ deckId }) => {
@@ -74,23 +74,20 @@ const Study = ({ deckId }) => {
   };
 
   return (
-    <div className="container">
-      <Breadcrumbs
-        tier={3}
-        parentPage={deck.name}
-        parentURL={`/decks/${deckId}`}
-        currentPage={"Study"}
-      />
-      <h1>Study: {deck.name}</h1>
-      <FlashCards
-        deckId={deck.id}
-        flipped={studyCard.flipped}
-        cardNumber={studyCard.number}
-        numberOfCards={deck.cards.length}
-        cardText={studyCard.text}
-        nextButtonClickHandler={nextButtonClickHandler}
-        flipButtonClickHandler={flipButtonClickHandler}
-      />
+    <div className="">
+      <UtilityBar backURL="back" />
+      <div className="absolute top-40 inset-0 bg-gradient-to-br from-indigo-800 to-slate-800 flex flex-col items-stretch">
+        <FlashCards
+          deckId={deck.id}
+          name={deck.name}
+          flipped={studyCard.flipped}
+          cardNumber={studyCard.number}
+          numberOfCards={deck.cards.length}
+          cardText={studyCard.text}
+          nextButtonClickHandler={nextButtonClickHandler}
+          flipButtonClickHandler={flipButtonClickHandler}
+        />
+      </div>
     </div>
   );
 };
