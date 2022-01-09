@@ -6,6 +6,7 @@ const UtilityBar = ({
   deck = false,
   editButtonClickHandler = "",
   deleteButtonClickHandler = "",
+  backURL = "home",
 }) => {
   const history = useHistory();
 
@@ -25,12 +26,16 @@ const UtilityBar = ({
       </div>
     );
 
+  const backButtonClickHandler = () => {
+    backURL === "home" ? history.push("/") : history.goBack();
+  };
+
   return (
-    <div className="px-8 py-3 bg-slate-200">
+    <div className="px-4 py-3 bg-slate-200">
       <div className="mx-auto max-w-screen-xl flex justify-between">
-        <div
-          className="py-3 flex items-center cursor-pointer"
-          onClick={() => history.goBack()}
+        <button
+          className="py-3 pr-3 flex items-center cursor-pointer"
+          onClick={backButtonClickHandler}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +50,7 @@ const UtilityBar = ({
             />
           </svg>
           <p className="ml-2 text-lg font-semibold text-indigo-600">Back</p>
-        </div>
+        </button>
         {showDeckButtons()}
       </div>
     </div>

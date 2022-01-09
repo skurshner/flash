@@ -19,18 +19,17 @@ const DeckHeader = ({ deck, deleteButtonClickHandler }) => {
         editButtonClickHandler={editButtonClickHandler}
         deleteButtonClickHandler={deleteButtonClickHandler}
       />
-      <div className="mx-auto max-w-screen-xl p-4">
-        <h2 className="text-3xl font-bold text-slate-700">{deck.name}</h2>
+      <div className="mx-auto max-w-screen-xl py-4 px-4">
+        <h1 className="text-3xl font-bold text-slate-700">{deck.name}</h1>
 
         <p className=" mt-3 text-slate-700">{deck.description}</p>
         <div className="mt-4 sm:w-40 sm:flex sm:flex-col sm:items-stretch">
           <Button
             variant={"secondary"}
-            type={"button"}
             fullWidth={true}
             text={"Study"}
             icon={"study"}
-            clickHandler={() => studyButtonClickHandler()}
+            clickHandler={studyButtonClickHandler}
           />
         </div>
       </div>

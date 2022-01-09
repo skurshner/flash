@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, useRouteMatch, useHistory } from "react-router-dom";
 import { readDeck, deleteDeck, updateDeck, createCard } from "../../utils/api";
-import Button from "../Common/Button";
 import CreateCard from "./Card/CreateCard";
 import EditCard from "./Card/EditCard";
 import CardList from "./CardList";
@@ -83,13 +82,9 @@ const Deck = () => {
           deck={deck}
           deleteButtonClickHandler={deleteButtonClickHandler}
         />
-        <CardList deckId={deckId} />
-        <Button
-          variant={"primary"}
-          type={"button"}
-          text={"Add Cards"}
-          icon={"plus-lg"}
-          clickHandler={() => addCardsButtonClickHandler()}
+        <CardList
+          deckId={deckId}
+          addCardsButtonClickHandler={addCardsButtonClickHandler}
         />
       </Route>
       <Route path={"/decks/:deckId/edit"}>

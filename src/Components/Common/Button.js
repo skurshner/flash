@@ -15,9 +15,9 @@ const Button = ({
 
   const buttonStyle = {
     primary: `${defaultButtonStyle} py-3 px-4 bg-indigo-50 text-indigo-600 shadow hover:bg-indigo-100 active:bg-indigo-200`,
-    secondary: `${defaultButtonStyle} py-3 px-4 bg-indigo-600 text-indigo-50 shadow`,
+    secondary: `${defaultButtonStyle} py-3 px-4 bg-indigo-600 text-indigo-50 hover:bg-indigo-700 active:bg-indigo-800 shadow`,
     icon: `${defaultButtonStyle} p-3 text-indigo-50 hover:bg-indigo-600`,
-    utility: `${defaultButtonStyle} p-3 text-indigo-600 hover:bg-indigo-200`,
+    utility: `${defaultButtonStyle} p-3 text-indigo-600 hover:bg-indigo-200 active:bg-indigo-300`,
   };
 
   const getFullWidth = fullWidth ? "w-full sm:w-auto" : "";

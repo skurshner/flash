@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useRouteMatch, useHistory } from "react-router-dom";
 import { deleteCard, readDeck } from "../../utils/api";
+import Button from "../Common/Button";
 import CardListItem from "./CardListItem";
 
-const CardList = ({ deckId }) => {
+const CardList = ({ deckId, addCardsButtonClickHandler }) => {
   const { url } = useRouteMatch();
   const history = useHistory();
   const [cards, setCards] = useState([]);
@@ -35,7 +36,7 @@ const CardList = ({ deckId }) => {
   // displays list of cards in deck
   const listOfCards = cards.map((card, index) => {
     return (
-      <div key={index}>
+      <div key={index} className="h-full">
         <CardListItem
           id={card.id}
           front={card.front}
@@ -48,9 +49,20 @@ const CardList = ({ deckId }) => {
   });
 
   return (
-    <div className="container py-2 px-0">
-      <h4>Cards</h4>
-      <div className="container px-0 py-3">{listOfCards}</div>
+    <div className="mx-auto max-w-screen-xl">
+      <div className="px-4 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+        {listOfCards}
+        <div className="flex flex-col items-stretch">
+          <Button
+            variant={"primary"}
+            type={"button"}
+            fullWidth={true}
+            text={"Add Cards"}
+            icon={"add"}
+            clickHandler={() => addCardsButtonClickHandler()}
+          />
+        </div>
+      </div>
     </div>
   );
 };

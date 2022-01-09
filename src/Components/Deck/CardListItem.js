@@ -9,35 +9,36 @@ const CardListItem = ({
   editButtonClickHandler,
 }) => {
   return (
-    <div className="card mb-2">
-      <div className="card-body">
-        <div className="row justify-content-between">
-          <div className="col-6">
-            <p>{front}</p>
-          </div>
-          <div className="col-6">
-            <p>{back}</p>
-          </div>
+    <div className="p-4 h-full bg-indigo-100 flex flex-col justify-between rounded-md shadow-sm">
+      <div>
+        <div className="mb-4 flex flex-col gap-1">
+          <p className="text-sm font-bold uppercase text-indigo-500">
+            Front Side
+          </p>
+          <p>{front}</p>
         </div>
-        <div className="row justify-content-end">
-          <div className="col-auto p-0 mr-2">
-            <Button
-              variant={"secondary"}
-              type={"button"}
-              text={"Edit"}
-              icon={"pencil-fill"}
-              clickHandler={() => editButtonClickHandler(id)}
-            />
-          </div>
-          <div className="col-auto ml-0 pl-0">
-            <Button
-              variant={"danger"}
-              type={"button"}
-              icon={"trash-fill"}
-              clickHandler={() => deleteButtonClickHandler(id)}
-            />
-          </div>
+
+        <div className="mb-6 flex flex-col gap-.0.5">
+          <p className="text-sm font-bold uppercase text-indigo-500">
+            Back Side
+          </p>
+          <p>{back}</p>
         </div>
+      </div>
+
+      <div className="flex justify-between">
+        <Button
+          variant={"secondary"}
+          text={"Edit"}
+          icon={"pencil-fill"}
+          clickHandler={() => editButtonClickHandler(id)}
+        />
+
+        <Button
+          variant={"utility"}
+          icon={"trash"}
+          clickHandler={() => deleteButtonClickHandler(id)}
+        />
       </div>
     </div>
   );
