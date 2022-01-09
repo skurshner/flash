@@ -72,6 +72,7 @@ const Deck = () => {
   };
 
   const handleDone = () => {
+    setNewCard(initialCardState);
     history.push(`/decks/${deckId}`);
   };
 

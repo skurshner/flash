@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { createDeck } from "../../utils/api";
-import UtilityBar from "../Common/UtilityBar.js";
+import UtilityBar from "../Common/UtilityBar";
 import DeckForm from "./DeckForm";
 
 const CreateDeck = () => {

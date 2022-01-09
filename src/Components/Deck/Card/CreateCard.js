@@ -1,6 +1,6 @@
 import React from "react";
-import Breadcrumbs from "../../Common/Breadcrumbs";
 import CardForm from "./CardForm";
+import UtilityBar from "../../Common/UtilityBar";
 
 const CreateCard = ({
   deck,
@@ -11,24 +11,23 @@ const CreateCard = ({
   handleDone,
 }) => {
   return (
-    <div className="container">
-      <Breadcrumbs
-        tier={3}
-        parentPage={deck.name}
-        parentURL={`/decks/${deck.id}`}
-        currentPage={"Add Card"}
-      />
-      <h1>{deck.name}: Add Card</h1>
-      <CardForm
-        card={newCard}
-        primaryButtonText={"Save"}
-        secondaryButtonText={"Done"}
-        handleFrontChange={handleFrontChange}
-        handleBackChange={handleBackChange}
-        handleSubmit={handleCardSave}
-        handleSecondaryButton={handleDone}
-      />
-    </div>
+    <>
+      <UtilityBar />
+      <div className="mx-auto p-4 w-full max-w-screen-md">
+        <h1 className="text-3xl font-semibold text-slate-700">
+          {deck.name}: Add Card
+        </h1>
+        <CardForm
+          card={newCard}
+          primaryButtonText={"Save"}
+          secondaryButtonText={"Done"}
+          handleFrontChange={handleFrontChange}
+          handleBackChange={handleBackChange}
+          handleSubmit={handleCardSave}
+          handleSecondaryButton={handleDone}
+        />
+      </div>
+    </>
   );
 };
 

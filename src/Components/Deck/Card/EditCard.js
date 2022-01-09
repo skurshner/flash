@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouteMatch, useHistory } from "react-router-dom";
 import { readCard, updateCard } from "../../../utils/api";
-import Breadcrumbs from "../../Common/Breadcrumbs";
+import UtilityBar from "../../Common/UtilityBar";
 import CardForm from "./CardForm";
 
 const EditCard = ({ deck }) => {
@@ -34,24 +34,21 @@ const EditCard = ({ deck }) => {
   const handleCancel = () => history.push(`/decks/${deck.id}`);
 
   return (
-    <div className="container">
-      <Breadcrumbs
-        tier={3}
-        parentPage={deck.name}
-        parentURL={`/decks/${deck.id}`}
-        currentPage={`Edit Card ${cardId}`}
-      />
-      <h1>Edit Card</h1>
-      <CardForm
-        card={card}
-        primaryButtonText={"Submit"}
-        secondaryButtonText={"Cancel"}
-        handleFrontChange={handleFrontUpdate}
-        handleBackChange={handleBackUpdate}
-        handleSubmit={handleSubmit}
-        handleSecondaryButton={handleCancel}
-      />
-    </div>
+    <>
+      <UtilityBar />
+      <div className="mx-auto p-4 w-full max-w-screen-md">
+        <h1 className="text-3xl font-semibold text-slate-700">Edit Card</h1>
+        <CardForm
+          card={card}
+          primaryButtonText={"Submit"}
+          secondaryButtonText={"Cancel"}
+          handleFrontChange={handleFrontUpdate}
+          handleBackChange={handleBackUpdate}
+          handleSubmit={handleSubmit}
+          handleSecondaryButton={handleCancel}
+        />
+      </div>
+    </>
   );
 };
 

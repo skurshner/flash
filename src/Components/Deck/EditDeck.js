@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import DeckForm from "./DeckForm";
-import UtilityBar from "../Common/UtilityBar.js";
+import UtilityBar from "../Common/UtilityBar";
 
 const EditDeck = ({
   deck,
