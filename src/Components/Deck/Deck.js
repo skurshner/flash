@@ -67,7 +67,7 @@ const Deck = () => {
   const handleCardSave = async event => {
     event.preventDefault();
     await createCard(deck.id, newCard);
-    await setNewCard(initialCardState);
+    setNewCard(initialCardState);
     readDeck(deckId);
   };
 

@@ -4,8 +4,8 @@ import { useHistory } from "react-router-dom";
 function Header() {
   const history = useHistory();
   return (
-    <header className="px-4 py-6 bg-gradient-to-br from-indigo-500  to-indigo-800">
-      <div className="mx-auto max-w-screen-xl">
+    <header className="bg-gradient-to-br from-indigo-500  to-indigo-800">
+      <div className="px-4 py-6 mx-auto max-w-screen-xl">
         <div
           className="flex items-center cursor-pointer"
           onClick={() => history.push("/")}
