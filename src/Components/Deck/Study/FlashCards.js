@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import Button from "../../Common/Button";
 
 const FlashCards = ({
+  cardsLoaded,
   deckId,
   name,
   flipped,
@@ -27,6 +28,14 @@ const FlashCards = ({
       ""
     );
   const backgroundColor = flipped ? "bg-indigo-50" : "bg-indigo-200";
+
+  // don't display anything until cards loaded
+  if (!cardsLoaded)
+    return (
+      <div>
+        <h3>Loading...</h3>
+      </div>
+    );
 
   // display instead of cards if there are fewer than 3 in deck
   if (numberOfCards < 3)

@@ -10,12 +10,14 @@ const Study = ({ deckId }) => {
 
   const [deck, setDeck] = useState({ cards: [] });
   const [studyCard, setStudyCard] = useState(initialCardState);
+  const [cardsLoaded, setCardsLoaded] = useState(false);
 
   // get deck data from it's id, set deck state only when there are cards
   useEffect(() => {
     async function getDeck() {
       const newDeck = await readDeck(deckId);
       setDeck(newDeck);
+      setCardsLoaded(true);
       if (newDeck.cards.length > 0)
         setStudyCard(currentStudyCard => {
           return { ...currentStudyCard, text: newDeck.cards[0].front };
@@ -78,6 +80,7 @@ const Study = ({ deckId }) => {
       <UtilityBar backURL="back" />
       <div className="absolute top-40 inset-0 bg-gradient-to-br from-indigo-800 to-slate-800 flex flex-col items-stretch">
         <FlashCards
+          cardsLoaded={cardsLoaded}
           deckId={deck.id}
           name={deck.name}
           flipped={studyCard.flipped}

@@ -50,7 +50,7 @@ const CardList = ({ deckId, addCardsButtonClickHandler }) => {
 
   return (
     <div className="mx-auto max-w-screen-xl">
-      <div className="px-4 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+      <div className="px-4 pb-8 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
         {listOfCards}
         <div className="flex flex-col items-stretch">
           <Button
