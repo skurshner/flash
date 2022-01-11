@@ -30,12 +30,7 @@ const FlashCards = ({
   const backgroundColor = flipped ? "bg-indigo-50" : "bg-indigo-200";
 
   // don't display anything until cards loaded
-  if (!cardsLoaded)
-    return (
-      <div className="w-full pt-20 flex justify-center">
-        <h3 className="text-xl font-semibold text-slate-50">One sec...</h3>
-      </div>
-    );
+  if (!cardsLoaded) return null;
 
   // display instead of cards if there are fewer than 3 in deck
   if (numberOfCards < 3)
