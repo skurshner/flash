@@ -32,8 +32,8 @@ const FlashCards = ({
   // don't display anything until cards loaded
   if (!cardsLoaded)
     return (
-      <div>
-        <h3>Loading...</h3>
+      <div className="w-full pt-20 flex justify-center">
+        <h3 className="text-xl font-semibold text-slate-50">One sec...</h3>
       </div>
     );
 
